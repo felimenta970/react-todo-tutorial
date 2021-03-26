@@ -11,7 +11,11 @@ class TodoItem extends React.Component {
                 />
                 {this.props.todo.title}
 
-                <button>Delete</button>
+                <button
+                    onClick={() => this.props.deleteTodoProps(this.props.todo.id)}
+                >
+                    Delete
+                </button>
             </li>
         )
     }
