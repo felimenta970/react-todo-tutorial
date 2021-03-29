@@ -8,7 +8,7 @@ import { v4 as uuidv4 } from "uuid";
 
 const TodoContainer = () => {
 
-    const [todos, setTodos] = useState([])
+    const [todos, setTodos] = useState(getInitialTodos())
 
     const handleChange = id => {
         setTodos(prevState =>
@@ -53,20 +53,28 @@ const TodoContainer = () => {
         )
     }
 
-    useEffect(() => {
-        const temp = localStorage.getItem("todos")
-        const loadedTodos = JSON.parse(temp)
+    function getInitialTodos() {
 
-        if (loadedTodos) {
-            setTodos(loadedTodos)
-        }
-    }, [setTodos]);
+        const temp = localStorage.getItem("todos")
+        const savedTodos = JSON.parse(temp)
+        return savedTodos || []
+    }
+
+    // useEffect(() => {
+    //     const temp = localStorage.getItem("todos")
+    //     const loadedTodos = JSON.parse(temp)
+
+    //     if (loadedTodos) {
+    //         setTodos(loadedTodos)
+    //     }
+    // }, [setTodos]);
+
 
     useEffect(() => {
 
         const temp = JSON.stringify(todos)
         localStorage.setItem("todos", temp)
-        
+
     }, [todos]);
 
     return (
