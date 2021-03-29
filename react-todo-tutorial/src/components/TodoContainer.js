@@ -32,7 +32,7 @@ class TodoContainer extends React.Component {
         this.setState(prevState =>  {
             return {
                 todos: prevState.todos.map(todo => {
-                    if (todo.id == id) {
+                    if (todo.id === id) {
                         return {
                             ...todo,
                             completed: !todo.completed,
@@ -67,7 +67,14 @@ class TodoContainer extends React.Component {
     }
 
     setUpdate = (updatedTitle, id) => {
-        console.log(updatedTitle, id)
+        this.setState({
+            todos: this.state.todos.map(todo => {
+                if (todo.id === id) {
+                    todo.title = updatedTitle
+                }
+                return todo
+            }),
+        })
     }
 
     render() {
