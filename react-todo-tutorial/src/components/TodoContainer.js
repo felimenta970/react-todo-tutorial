@@ -2,6 +2,7 @@ import React from "react"
 
 import TodoList from "./TodoList"
 import Header from "./Header"
+import InputTodo from "./InputTodo"
 
 class TodoContainer extends React.Component {
 
