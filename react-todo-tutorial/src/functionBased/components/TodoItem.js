@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react"
+import { FaTrash } from "react-icons/fa"
 
 import styles from "./TodoItem.module.css"
 
@@ -54,21 +55,21 @@ const TodoItem = props => {
                 <button
                     onClick={() => props.deleteTodoProps(id)}
                 >
-                    Delete
+                    <FaTrash style={{ color: "orangered", fontSize: "16px"}}/>
                 </button>
                 <span style={completed ? completedStyle : null}>
                     {title}
                 </span>
             </div>
             <input
-            type="text"
-            style={editMode}
-            className="styles.textInput"
-            value={title}
-            onChange={e => {
-                props.setUpdate(e.target.value, id)
-            }}
-            onKeyDown={handleUpdatedDone}
+                type="text"
+                style={editMode}
+                className="styles.textInput"
+                value={title}
+                onChange={e => {
+                    props.setUpdate(e.target.value, id)
+                }}
+                onKeyDown={handleUpdatedDone}
             />
         </li>
     )
