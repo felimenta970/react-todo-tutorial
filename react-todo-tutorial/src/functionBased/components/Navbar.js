@@ -1,6 +1,8 @@
 import React from "react"
 import { FaHome } from "react-icons/fa"
 
+import { NavLink } from "react-router-dom"
+
 const Navbar = () => {
 
     const links = [
@@ -16,7 +18,17 @@ const Navbar = () => {
         },
     ]
 
-    return <div>Hello from Navbar</div>
+    return (
+        <nav className="navBar">
+            <ul>
+                {links.map(link => {
+                    return <li key={link.id}>
+                        <NavLink to={link.path} activeClassName="active-link">{link.text}</NavLink>
+                    </li>
+                })}
+            </ul>
+        </nav>
+    )
 }
 
 export default Navbar
